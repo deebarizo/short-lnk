@@ -1,8 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'; 
-import createBrowserHistory from 'history/createBrowserHistory';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Login from './../imports/ui/Login';
 import Signup from './../imports/ui/Signup';
