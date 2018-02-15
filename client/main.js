@@ -26,7 +26,7 @@ const routes = (
  					return Meteor.userId() ? <Redirect to="/links" /> : <Signup />
  				}} />
 	            <Route path="/links" render={() => {
- 					return Meteor.userId() ? <Link /> : <Redirect to="/signup" />
+ 					return Meteor.userId() ? <Link /> : <Redirect to="/" />
  				}} />
 	            <Route component={NotFound} />
 	        </Switch>
@@ -46,11 +46,11 @@ Tracker.autorun(() => {
 	if (isAuthenticated) {
 		if (isUnauthenticatedPage) {
 			console.log('push to /links');
-			history.push('/links');
+			history.replace('/links');
 		}
 	} else if (isAuthenticatedPage) {
 		console.log('push to /');
-		history.push('/');
+		history.replace('/');
 	}
 });
 
