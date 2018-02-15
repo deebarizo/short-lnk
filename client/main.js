@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Switch, Route } from 'react-router-dom';
+import { Redirect, Router, Switch, Route } from 'react-router-dom';
 import { Tracker } from 'meteor/tracker';
 import history from './../imports/history';
 
@@ -19,9 +19,15 @@ const routes = (
     <Router history={history}>
     	<div>
 	        <Switch>
-	        	<Route exact path="/" component={Login} />
-	            <Route path="/signup" component={Signup} />
-	            <Route path="/links" component={Link} />
+	        	<Route exact path="/" render={() => {
+ 					return Meteor.userId() ? <Redirect to="/links" /> : <Login />
+ 				}} />
+	            <Route path="/signup" render={() => {
+ 					return Meteor.userId() ? <Redirect to="/links" /> : <Signup />
+ 				}} />
+	            <Route path="/links" render={() => {
+ 					return Meteor.userId() ? <Link /> : <Redirect to="/signup" />
+ 				}} />
 	            <Route component={NotFound} />
 	        </Switch>
         </div>
