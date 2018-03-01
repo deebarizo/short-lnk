@@ -11,5 +11,9 @@ Tracker.autorun(() => {
 });
 
 Meteor.startup(() => {
+	Meteor.call('greetUser', 'Mike', (err, res) => {
+		console.log('greetUser arguments', err, res);
+	});
+
 	ReactDOM.render(routes, document.getElementById('app'));	
 });

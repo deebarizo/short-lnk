@@ -5,5 +5,4 @@ import '../imports/api/links';
 
 Meteor.startup(() => {
 
-
 });

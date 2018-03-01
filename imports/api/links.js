@@ -9,4 +9,10 @@ if (Meteor.isServer) {
 	});
 }
 
+Meteor.methods({
+	greetUser(name = 'User') {
+		console.log('greetUser is running', );
 
+		return `Hello ${name}!`;
+	}
+});
