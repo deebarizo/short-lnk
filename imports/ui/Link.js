@@ -1,4 +1,5 @@
 import React from 'react';
+import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 
 import { Links } from '../api/links';
@@ -15,7 +16,7 @@ export default class Link extends React.Component {
 		e.preventDefault();
 
 		if (url) {
-			Links.insert({ url })
+			Links.insert({ url, userId: Meteor.userId() })
 			this.refs.url.value = '';
 		}
 	}
@@ -32,7 +33,7 @@ export default class Link extends React.Component {
 				<p>Add Link</p>
 				
 				<form onSubmit={this.onSubmit.bind(this)}>
-					<input  type="text" ref="url" placeholder="URL" />
+					<input type="text" ref="url" placeholder="URL" />
 					<button>Add Link</button>
 				</form>
 			</div>
